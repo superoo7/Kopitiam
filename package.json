@@ -1,0 +1,33 @@
+{
+  "devDependencies": {
+    "@types/dotenv": "^4.0.3",
+    "@types/jest": "^22.2.3",
+    "@types/node": "^9.6.5",
+    "concurrently": "^3.5.1",
+    "jest": "^22.4.3",
+    "nodemon": "^1.17.3",
+    "typescript": "^2.8.1"
+  },
+  "dependencies": {
+    "discord.js": "^11.3.2",
+    "dotenv": "^5.0.1"
+  },
+  "name": "Kopitiam",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"tsc -w\" \"nodemon ./dist/index.js\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/superoo7/Kopitiam.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/superoo7/Kopitiam/issues"
+  },
+  "homepage": "https://github.com/superoo7/Kopitiam#readme",
+  "description": ""
+}
