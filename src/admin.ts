@@ -1,4 +1,5 @@
 import * as Discord from 'discord.js'
+import gif from './gif'
 import { TRIGGER } from './config'
 
 let defaultMessage: string = `
@@ -17,10 +18,15 @@ export default function admin(msg: Discord.Message, client: Discord.Client): voi
 
     switch (cmd) {
       case 'delete':
-        deleteMessage(msg, client, args)
+        deleteMessage(msg, client, args).catch(() => {
+          msg.reply('err')
+        })
         break
       case 'help':
         msg.reply(defaultMessage)
+        break
+      case 'gif':
+        gif(msg, args)
         break
       default:
         msg.reply(defaultMessage)
@@ -30,19 +36,15 @@ export default function admin(msg: Discord.Message, client: Discord.Client): voi
   return
 }
 
-async function deleteMessage(msg: Discord.Message, client: any, args: string[]) {
-  let messageSize: number = 1
-
+async function deleteMessage(msg: Discord.Message, client: Discord.Client, args: string[]) {
   if (!!parseInt(args[1])) {
-    await client.channels
-      .get(msg.channel.id)
-      .fetchMessages({ limit: parseInt(args[0]) })
-      .then((msgs: any) => {
-        console.log(msgs.count)
-        msgs.map((m: any, c: number) => {
-          m.delete(100)
-        })
+    await msg.channel.fetchMessages({ limit: parseInt(args[1]) }).then(async (msgs: any) => {
+      console.log(msgs.count)
+      await msgs.map(async (m: Discord.Message, c: number) => {
+        await m.delete(10)
       })
+    })
+    msg.reply('done')
   } else {
     msg.reply('invalid number')
   }
@@ -55,3 +57,5 @@ async function dM(client: any, id: string) {
 
   return count
 }
+
+// async function d(client: anu)

@@ -9,8 +9,11 @@
     "typescript": "^2.8.1"
   },
   "dependencies": {
+    "@types/axios": "^0.14.0",
+    "axios": "^0.18.0",
     "discord.js": "^11.3.2",
-    "dotenv": "^5.0.1"
+    "dotenv": "^5.0.1",
+    "giphy": "^0.0.4"
   },
   "name": "Kopitiam",
   "version": "1.0.0",
