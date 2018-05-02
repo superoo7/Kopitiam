@@ -11,10 +11,20 @@ const gif = async (msg: Discord.Message, args: string[]) => {
 
   const link = 'https://api.giphy.com/v1/gifs/random?' + qs.stringify(query)
   const res = await axios.get(link)
-  //   console.log(data)
-  console.log(res.data.data)
-  await msg.delete()
-  await msg.reply(`GIF for '${searchQuery}'\n${res.data.data.url}`)
+  //   await msg.delete()
+  //   await msg.reply(`GIF for '${searchQuery}'\n${res.data.data.url}`)
+  const gifLink = res.data.data.images.preview_gif.url
+  console.log(gifLink)
+  console.log(res.data.data.images.preview_gif.url)
+  //   await msg.delete()
+  await msg.channel.send({
+    embed: {
+      title: `GIF for '${searchQuery}'`,
+      image: {
+        url: gifLink
+      }
+    }
+  })
   return
 }
 
