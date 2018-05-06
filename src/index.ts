@@ -4,10 +4,12 @@ import * as dotenv from 'dotenv'
 
 // internal file
 import message from './message'
+import Global from './global'
 
 // Initializer
 dotenv.config()
 const client = new Discord.Client()
+let gb = new Global()
 
 // On Discord bot ready
 client.on('ready', () => {
@@ -16,7 +18,7 @@ client.on('ready', () => {
 
 // When Discord bot receive message
 client.on('message', msg => {
-  message(msg, client)
+  message(msg, client, gb)
 })
 
 // Discord Bot Sign in
