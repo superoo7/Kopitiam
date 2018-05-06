@@ -16,7 +16,7 @@ const gif = async (msg: Discord.Message, args: string[]) => {
   const gifLink = res.data.data.images.preview_gif.url
   console.log(gifLink)
   console.log(res.data.data.images.preview_gif.url)
-  //   await msg.delete()
+  await msg.delete()
   await msg.channel.send({
     embed: {
       title: `GIF for '${searchQuery}'`,

@@ -42,6 +42,7 @@ const router = async (msg: Discord.Message, client: Discord.Client, gb: Global) 
       case 'gif':
         gif(msg, args)
         break
+      case 'q':
       case 'question':
         if (args.length === 1) {
           msg.delete()
@@ -73,7 +74,7 @@ const router = async (msg: Discord.Message, client: Discord.Client, gb: Global) 
           }
         } else {
           const question = args.slice(1, args.length).join(' ')
-          gb.addQuestions(question)
+          gb.addQuestions(`${question} from ${msg.author}`)
           // @ts-ignore
           msg.reply(`added question: ${question}`).then((m: Discord.Message) => {
             m.delete(4000)
