@@ -12,7 +12,9 @@ let adminMessage: string = `
 
 let userMessage: string = `
 **User FEATURE**
-\`${TRIGGER}delete\` to delete all message
+\`${TRIGGER}q <question>\` to add new question
+\`${TRIGGER}gif <tag>\` get random gif from giphy
+\`${TRIGGER}img <name>\` get image of a person
 `
 
 const router = async (msg: Discord.Message, client: Discord.Client, gb: Global) => {
