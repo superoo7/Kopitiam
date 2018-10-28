@@ -3,6 +3,7 @@ import { TRIGGER, ADMIN_ID } from './config'
 import { deleteMessage } from './admin'
 import gif from './gif'
 import Global from './global'
+import image from './image'
 
 let adminMessage: string = `
 **ADMIN FEATURE**
@@ -24,6 +25,10 @@ const router = async (msg: Discord.Message, client: Discord.Client, gb: Global) 
     // check admin
     const isAdmin = ADMIN_ID.includes(msg.author.id)
     switch (cmd) {
+      case 'img':
+      case 'image':
+        image(msg, args)
+        break
       case 'delete':
         if (isAdmin) {
           deleteMessage(msg, client, args).catch(() => {

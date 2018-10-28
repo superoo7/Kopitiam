@@ -13,13 +13,14 @@
     "axios": "^0.18.0",
     "discord.js": "^11.3.2",
     "dotenv": "^5.0.1",
-    "giphy": "^0.0.4"
+    "giphy": "^0.0.4",
+    "ts-node": "^7.0.1"
   },
-  "name": "Kopitiam",
+  "name": "kopitiam",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently \"tsc -w\" \"nodemon ./dist/index.js\""
+    "dev": "ts-node src/index.ts"
   },
   "repository": {
     "type": "git",

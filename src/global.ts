@@ -1,13 +1,20 @@
+import * as fs from 'fs'
+import * as util from 'util'
+
+const fs_writeFile = util.promisify(fs.writeFile)
+
 class Global {
   private questions: string[]
   private savedMsg: string[]
+  private qJson = 'question.json'
   constructor() {
     this.questions = []
     this.savedMsg = []
   }
 
   getQuestions(): string[] {
-    return this.questions
+    const data: string[] = JSON.parse(fs.readFileSync(this.qJson, 'utf-8'))
+    return data
   }
 
   getSavedMsg(): string[] {
@@ -15,7 +22,8 @@ class Global {
   }
 
   clearQuestions(): void {
-    this.questions = []
+    fs_writeFile(this.qJson, '[]')
+    return
   }
 
   clearSavedMsg(): void {
@@ -23,7 +31,10 @@ class Global {
   }
 
   addQuestions(q: string): void {
-    this.questions = [...this.questions, q]
+    let data: string[] = JSON.parse(fs.readFileSync(this.qJson, 'utf-8'))
+    data = [...data, q]
+    fs_writeFile(this.qJson, JSON.stringify(data))
+    return
   }
 
   addSavedMsg(m: string): void {
